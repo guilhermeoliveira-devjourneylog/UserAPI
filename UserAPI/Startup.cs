@@ -43,6 +43,9 @@ namespace UserAPI
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<CadastroService, CadastroService>();
+            services.AddScoped<TokenService, TokenService>();
+            services.AddScoped<LoginService, LoginService>();
+            services.AddScoped<LogoutService, LogoutService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
