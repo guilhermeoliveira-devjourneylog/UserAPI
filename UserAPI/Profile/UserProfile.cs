@@ -9,12 +9,12 @@ using UserAPI.Models;
 
 namespace UserAPI.Profiles
 {
-    public class UsuarioProfile : Profile
+    public class UserProfile : Profile
     {
-        public UsuarioProfile()
+        public UserProfile()
         {
-            CreateMap<CreateUsuarioDto, Usuario>();
-            CreateMap<Usuario, IdentityUser<int>>();
+            CreateMap<CreateUserDto, User>();
+            CreateMap<User, IdentityUser<int>>();
         }
     }
 }

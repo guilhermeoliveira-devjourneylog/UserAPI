@@ -1,7 +1,7 @@
 ﻿
 namespace UserAPI.Models
 {
-    public class Usuario
+    public class User
     {
         public int Id { get; set; }
         public string Username { get; set; }

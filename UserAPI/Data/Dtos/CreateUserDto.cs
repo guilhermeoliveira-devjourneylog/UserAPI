@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UserAPI.Data.Dtos.Usuario
 {
-    public class CreateUsuarioDto
+    public class CreateUserDto
     {
         [Required]
         public string Username { get; set; }
