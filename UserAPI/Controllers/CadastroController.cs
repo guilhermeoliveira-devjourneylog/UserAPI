@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UserAPI.Data.Dtos.Usuario;
-using UserAPI.Services;
+using UserAPI.Data.Dtos;
+using UserAPI.Data.Dtos.User;
 using UserAPI.Data.Requests;
+using UserAPI.Services;
+
 
 namespace UserAPI.Controllers
 {
@@ -28,8 +30,8 @@ namespace UserAPI.Controllers
             if (resultado.IsFailed) return StatusCode(500);
             return Ok(resultado.Successes);
         }
-        [HttpPost("/ativa")]
-        public IActionResult AtivaContaUsuario(ActiveAccountRequest request)
+        [HttpGet("/ativa")]
+        public IActionResult AtivaContaUsuario([FromQuery] ActiveAccountRequest request)
         {
             Result resultado = _cadastroService.AtivaContaUsuario(request);
             if (resultado.IsFailed) return StatusCode(500);

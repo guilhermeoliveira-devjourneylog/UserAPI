@@ -1,36 +1,42 @@
 ﻿using FluentResults;
 using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UserAPI.Data.Requests;
 using UserAPI.Models;
 using UserAPI.Services;
 
-public class LoginService
+namespace UserAPI.Services
 {
-    private SignInManager<IdentityUser<int>> _signInManager;
-    private TokenService _tokenService;
-
-    public LoginService(SignInManager<IdentityUser<int>> signInManager,
-        TokenService tokenService)
+    public class LoginService
     {
-        _signInManager = signInManager;
-        _tokenService = tokenService;
-    }
+        private SignInManager<IdentityUser<int>> _signInManager;
+        private TokenService _tokenService;
 
-    public Result LogaUsuario(LoginRequest request)
-    {
-        var resultadoIdentity = _signInManager
-            .PasswordSignInAsync(request.Username, request.Password, false, false);
-        if (resultadoIdentity.Result.Succeeded)
+        public LoginService(SignInManager<IdentityUser<int>> signInManager,
+            TokenService tokenService)
         {
-            var identityUser = _signInManager
-                .UserManager
-                .Users
-                .FirstOrDefault(usuario =>
-                usuario.NormalizedUserName == request.Username.ToUpper());
-            Token token = _tokenService.CreateToken(identityUser);
-            return Result.Ok().WithSuccess(token.Value);
+            _signInManager = signInManager;
+            _tokenService = tokenService;
         }
-        return Result.Fail("Login falhou");
+
+        public Result LogaUsuario(LoginRequest request)
+        {
+            var resultadoIdentity = _signInManager
+                .PasswordSignInAsync(request.Username, request.Password, false, false);
+            if (resultadoIdentity.Result.Succeeded)
+            {
+                var identityUser = _signInManager
+                    .UserManager
+                    .Users
+                    .FirstOrDefault(usuario =>
+                    usuario.NormalizedUserName == request.Username.ToUpper());
+                Token token = _tokenService.CreateToken(identityUser);
+                return Result.Ok().WithSuccess(token.Value);
+            }
+            return Result.Fail("Login falhou");
+        }
     }
 }

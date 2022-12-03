@@ -9,7 +9,7 @@ using UserAPI.Data;
 namespace UserAPI.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20221127194458_Create_User")]
+    [Migration("20221202144913_Create_User")]
     partial class Create_User
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

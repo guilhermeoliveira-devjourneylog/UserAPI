@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UserAPI.Data.Dtos.Usuario
+namespace UserAPI.Data.Dtos.User
 {
     public class CreateUserDto
     {
