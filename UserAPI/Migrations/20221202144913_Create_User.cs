@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.EntityFrameworkCore.Metadata;
-
+//Definições de tabelas necessárias para autorização e autenticação
 namespace UserAPI.Migrations
 {
     public partial class Create_User : Migration
